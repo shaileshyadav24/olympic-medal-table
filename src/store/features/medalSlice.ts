@@ -2,9 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {sortMedalListByType, calculateTotalMedals} from '@/services/medalSort';
 import Medal from '@/interfaces/Medal';
 import MedalState from '@/interfaces/MedalState';
+import medalTypes from '@/constants/medalType';
 
 const initialState: MedalState = {
-  sortBy: 'gold',
+  sortBy: medalTypes.GOLD,
   medalList: [],
 };
 

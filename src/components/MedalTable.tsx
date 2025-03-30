@@ -2,13 +2,13 @@
 import "@/styles/flag.css";
 import "@/styles/medalTable.css";
 
-import Medal from '@/interfaces/Medal';
+import { TableRow } from "./ui/TableRow";
 
-interface MedalTableProps {
-	medalList: Medal[];
-	sortBy: string;
-	setSortBy: Function
-}
+import content from "@/content/content";
+import medalTypes from "@/constants/medalType";
+
+import Medal from '@/interfaces/Medal';
+import MedalTableProps from '@/interfaces/MedalTableProps';
 
 export default function MedalTable({ medalList, sortBy, setSortBy }: MedalTableProps) {
 
@@ -18,41 +18,35 @@ export default function MedalTable({ medalList, sortBy, setSortBy }: MedalTableP
 
 	return (
 		<>
-			<h1 className="text-xl">MEDAL COUNT</h1>
+			<h1 className="text-xl">{content.MEDAL_TABLE_TITLE}</h1>
 			<table className="w-full text-sm text-gray-500 table-auto">
 				<thead className="text-base text-gray-700 uppercase bg-gray-50">
 					<tr>
 						<th className="px-6 py-3"></th>
 						<th className="px-6 py-3"></th>
-						<th className={`px-6 py-3 medal-heading ${sortBy === 'gold' && 'sorted'}`} onClick={() => sortTableBy('gold')}>
+						<th className={`px-6 py-3 medal-heading ${sortBy === medalTypes.GOLD && 'sorted' || ''}`}
+							onClick={() => sortTableBy(medalTypes.GOLD)}>
 							<div className="medals gold"></div>
 						</th>
-						<th className={`px-6 py-3 medal-heading ${sortBy === 'silver' && 'sorted'}`} onClick={() => sortTableBy('silver')}>
+						<th className={`px-6 py-3 medal-heading ${sortBy === medalTypes.SILVER && 'sorted' || ''}`}
+							onClick={() => sortTableBy(medalTypes.SILVER)}>
 							<div className="medals silver"></div>
 						</th>
-						<th className={`px-6 py-3 medal-heading ${sortBy === 'bronze' && 'sorted'}`} onClick={() => sortTableBy('bronze')}>
+						<th className={`px-6 py-3 medal-heading ${sortBy === medalTypes.BRONZE && 'sorted' || ''}`}
+							onClick={() => sortTableBy(medalTypes.BRONZE)}>
 							<div className="medals bronze"></div>
 						</th>
-						<th className={`px-6 py-3 total ${sortBy === 'total' && 'sorted'}`} onClick={() => sortTableBy('total')}>TOTAL</th>
+						<th className={`px-6 py-3 total ${sortBy === medalTypes.TOTAL && 'sorted' || ''}`}
+							onClick={() => sortTableBy(medalTypes.TOTAL)}>{content.TOTAL_TITLE}</th>
 					</tr>
 				</thead>
 				<tbody>
 					{medalList.map((medal: Medal, index: number) => (
-
-						<tr key={medal.code} className="bg-white border-b border-gray-200">
-
-							<td>{index + 1}</td>
-							<td>
-								<div className="flag-container">
-									<div className={`flag ${medal.code}`} />
-									<div>{medal.code}</div>
-								</div>
-							</td>
-							<td>{medal.gold}</td>
-							<td>{medal.silver}</td>
-							<td>{medal.bronze}</td>
-							<td className="text-base"><b>{medal.total}</b></td>
-						</tr>
+						<TableRow
+							key={medal.code}
+							medal={medal}
+							index={index} />
+						
 					))}
 				</tbody>
 			</table>
@@ -60,3 +54,4 @@ export default function MedalTable({ medalList, sortBy, setSortBy }: MedalTableP
 	)
 
 }
+

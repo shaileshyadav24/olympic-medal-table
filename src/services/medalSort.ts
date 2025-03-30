@@ -1,4 +1,5 @@
 import Medal from '@/interfaces/Medal';
+import medalTypes from '@/constants/medalType';
 
 function sortMedalsByGold (medalList: Medal[]): Medal[] {
     return [...medalList].sort((a, b) => b.gold - a.gold || b.silver - a.silver);
@@ -18,13 +19,13 @@ function sortMedalsByTotal (medalList: Medal[]) {
 
 export function sortMedalListByType (type: string, medalList: Medal[]) {
     switch (type) {
-        case 'gold':
+        case medalTypes.GOLD:
             return sortMedalsByGold(medalList);
-        case 'silver':
+        case medalTypes.SILVER:
             return sortMedalsBySilver(medalList);
-        case 'bronze':
+        case medalTypes.BRONZE:
             return sortMedalsByBronze(medalList);
-        case 'total':
+        case medalTypes.TOTAL:
             return sortMedalsByTotal(medalList);
         default:
             return medalList;

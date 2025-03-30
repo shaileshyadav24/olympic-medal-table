@@ -1,5 +1,7 @@
+import host from '@/constants/url';
+
 export async function getMedalsList() {
-    return fetch('http://localhost:4000/medals')
+    return fetch(host + '/medals')
         .then((response) => {
             return response.json();
         })
