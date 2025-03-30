@@ -8,9 +8,9 @@ import Error from "@/components/ui/Error";
 import Loading from "@/components/ui/Loading";
 
 export default function Home() {
-  let dispatch = useDispatch();
-  let [isLoading, setIsLoading] = useState(true);
-  let [isError, setIsError] = useState(false);
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     getMedalsList().then((data) => {

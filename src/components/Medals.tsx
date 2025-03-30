@@ -18,11 +18,11 @@ const validSortTypes = [
 export default function Medals() {
     const searchParams = useSearchParams()
     const dispatch = useDispatch();
-    let medalList = useSelector((state: any) => state.medal.medalList);
-    let [sortBy, setSortBy] = useState(medalTypes.GOLD);
+    const medalList = useSelector((state: any) => state.medal.medalList);
+    const [sortBy, setSortBy] = useState(medalTypes.GOLD);
 
     useEffect(() => {
-        let sortQuery = searchParams.get('sort');
+        const sortQuery = searchParams.get('sort');
         if (sortQuery && validSortTypes.includes(sortQuery)) {
             setSortBy(searchParams.get('sort') as string);
         }
