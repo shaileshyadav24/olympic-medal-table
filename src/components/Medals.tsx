@@ -8,6 +8,13 @@ import MedalTable from './MedalTable';
 import NoMedals from './ui/NoMedals';
 import medalTypes from '@/constants/medalType';
 
+const validSortTypes = [
+    medalTypes.GOLD,
+    medalTypes.SILVER,
+    medalTypes.BRONZE,
+    medalTypes.TOTAL
+]
+
 export default function Medals() {
     const searchParams = useSearchParams()
     const dispatch = useDispatch();
@@ -15,7 +22,8 @@ export default function Medals() {
     let [sortBy, setSortBy] = useState(medalTypes.GOLD);
 
     useEffect(() => {
-        if (searchParams.has('sort')) {
+        let sortQuery = searchParams.get('sort');
+        if (sortQuery && validSortTypes.includes(sortQuery)) {
             setSortBy(searchParams.get('sort') as string);
         }
     }, []);
