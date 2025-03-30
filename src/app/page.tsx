@@ -14,8 +14,8 @@ export default function Home() {
 
   useEffect(() => {
     getMedalsList().then((data) => {
-      dispatch(SET_MEDALS(data));
-      dispatch(CALCULATE_TOTAL_MEDALS());
+      // dispatch(SET_MEDALS(data));
+      // dispatch(CALCULATE_TOTAL_MEDALS());
     }
     ).catch(() => {
       setIsError(true);

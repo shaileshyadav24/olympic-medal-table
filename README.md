@@ -5,6 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
+npm run json-server
 npm run dev
 # or
 yarn dev
@@ -16,21 +17,36 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run the error scenario, don't run  `json-server`  command to see the error screen.
 
-## Learn More
+To update json, please check `mocks/medals.json`. For the purpose of a mock api, `json-server` needs objects of array. If you require updating, please maintain structure.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sort By Gold
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Gold Medal](./screenshots/gold.png)
 
-## Deploy on Vercel
+## Sort By Silver
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Gold Medal](./screenshots/silver.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sort By Bronze
+
+![Gold Medal](./screenshots/bronze.png)
+
+## Sort By Total
+
+![Gold Medal](./screenshots/total.png)
+
+## Loading screen
+
+![Gold Medal](./screenshots/loading.png)
+
+## Error screen
+
+![Gold Medal](./screenshots/error.png)
+
+## No Medals screen
+
+![Gold Medal](./screenshots/nomedals.png)
