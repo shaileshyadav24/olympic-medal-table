@@ -1,0 +1,49 @@
+table {
+    width: 600px;
+
+    tr {
+        text-align: center;
+    }
+    thead {
+        border-bottom: solid;
+        border-bottom-width: 3px;
+    }
+    .sorted {
+        border-top: solid
+    }
+
+    .medal-heading {
+        width: 50px;
+        text-align: center;
+    }
+    .total {
+        width: 100px;
+        cursor: pointer;
+    }
+
+    .medals {
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .gold {
+        background-color: gold;
+    }
+
+    .silver {
+        background-color: silver;
+    }
+
+    .bronze {
+        background-color: #FF5733;
+    }
+
+    .flag-container {
+        display: flex;
+        gap: 10px;
+        margin: 5px 0;
+        font-weight: bold;
+    }
+}

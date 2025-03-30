@@ -1,0 +1,57 @@
+.flag {
+    width: 28px;
+    height: 17px;
+    background: url(../assets/flags.png);
+}
+
+.USA {
+    background-position: 0 17px;
+}
+
+.SWE {
+    background-position: 17px 34px;
+}
+
+.SUI {
+    background-position: 34px 51px;
+}
+
+.RUS {
+    background-position: 51px 68px;
+}
+
+.NOR {
+    background-position: 68px 85px;
+}
+
+.NED {
+    background-position: 85px 102px;
+}
+
+.ITA {
+    background-position: 102px 119px;
+}
+
+.GER {
+    background-position: 119px 136px;
+}
+
+.FRA {
+    background-position: 136px 153px;
+}
+
+.CHN {
+    background-position: 153px 170px;
+}
+
+.CAN {
+    background-position: 170px 187px;
+}
+
+.BLR {
+    background-position: 187px 204px;
+}
+
+.AUT {
+    background-position: 204px 221px;
+}
