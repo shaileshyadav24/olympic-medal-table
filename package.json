@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "json-server": "json-server --watch mocks/medals.json --port 4000 "
+    "json-server": "json-server --watch mocks/medals.json --port 4000 --delay 5000 "
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",

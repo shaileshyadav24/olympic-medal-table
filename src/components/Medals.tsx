@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SORT_MEDALS_BY_TYPE } from "@/store/features/medalSlice";
 import MedalTable from './MedalTable';
+import NoMedals from './ui/NoMedals';
 
 export default function Medals() {
     const searchParams = useSearchParams()
@@ -27,15 +28,12 @@ export default function Medals() {
         <>
             {
                 medalList && medalList.length > 0 ? (
-                    <MedalTable 
-                        medalList={medalList} 
-                        sortBy={sortBy} 
-                        setSortBy={setSortBy}/>
+                    <MedalTable
+                        medalList={medalList}
+                        sortBy={sortBy}
+                        setSortBy={setSortBy} />
                 )
-                    : (
-                        <div>
-                            <p>No medals available</p>
-                        </div>)
+                    : (<NoMedals />)
             }
         </>
     )

@@ -4,32 +4,32 @@ import { SET_MEDALS, CALCULATE_TOTAL_MEDALS } from "@/store/features/medalSlice"
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Medals from "@/components/Medals";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
 
 export default function Home() {
   let dispatch = useDispatch();
-  let [loading, setLoading] = useState(true);
-  let [error, setError] = useState(false);
+  let [isLoading, setIsLoading] = useState(true);
+  let [isError, setIsError] = useState(false);
 
   useEffect(() => {
     getMedalsList().then((data) => {
       dispatch(SET_MEDALS(data));
       dispatch(CALCULATE_TOTAL_MEDALS());
-      setError(false);
-      setLoading(false);
     }
     ).catch(() => {
-      setError(true);
-      setLoading(false);
-    });
+      setIsError(true);
+    }).finally(() => {
+      setIsLoading(false);
+    }
+  );
   }, []);
 
   return (
     <>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error loading medals</div>}
-      {!loading && !error && <div>
-          <Medals />
-        </div>}
+      {isLoading && <Loading />}
+      {isError && <Error />}
+      {!isLoading && !isError && <Medals />}
     </>
   );
 }
