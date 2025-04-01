@@ -1,19 +1,24 @@
 'use client'
 import "@/styles/flag.css";
 import "@/styles/medalTable.css";
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TableRow } from "./ui/TableRow";
 
 import content from "@/content/content";
 import medalTypes from "@/constants/medalType";
+import Medal from "@/interfaces/Medal";
 
-import Medal from '@/interfaces/Medal';
-import MedalTableProps from '@/interfaces/MedalTableProps';
+import { SORT_MEDALS_BY_TYPE } from "@/store/features/medalSlice";
 
-export default function MedalTable({ medalList, sortBy, setSortBy }: MedalTableProps) {
+export default function MedalTable() {
+
+	const dispatch = useDispatch();
+	const medalList = useSelector((state: any) => state.medal.medalList);
+	const sortBy = useSelector((state: any) => state.medal.sortBy);
 
 	function sortTableBy(type: string) {
-		setSortBy(type);
+		dispatch(SORT_MEDALS_BY_TYPE(type));
 	}
 
 	return (
