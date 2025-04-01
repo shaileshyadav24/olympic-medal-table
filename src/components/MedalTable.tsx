@@ -10,12 +10,13 @@ import medalTypes from "@/constants/medalType";
 import Medal from "@/interfaces/Medal";
 
 import { SORT_MEDALS_BY_TYPE } from "@/store/features/medalSlice";
+import MedalState from "@/interfaces/MedalState";
 
 export default function MedalTable() {
 
 	const dispatch = useDispatch();
-	const medalList = useSelector((state: any) => state.medal.medalList);
-	const sortBy = useSelector((state: any) => state.medal.sortBy);
+	const medalList = useSelector((state: {medal: MedalState}) => state.medal.medalList);
+	const sortBy = useSelector((state: {medal: MedalState}) => state.medal.sortBy);
 
 	function sortTableBy(type: string) {
 		dispatch(SORT_MEDALS_BY_TYPE(type));

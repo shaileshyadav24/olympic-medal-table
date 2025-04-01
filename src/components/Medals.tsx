@@ -7,6 +7,7 @@ import { SORT_MEDALS_BY_TYPE } from "@/store/features/medalSlice";
 import MedalTable from './MedalTable';
 import NoMedals from './ui/NoMedals';
 import medalTypes from '@/constants/medalType';
+import MedalState from '@/interfaces/MedalState';
 
 const validSortTypes = [
     medalTypes.GOLD,
@@ -18,7 +19,7 @@ const validSortTypes = [
 export default function Medals() {
     const searchParams = useSearchParams()
     const dispatch = useDispatch();
-    const medalList = useSelector((state: any) => state.medal.medalList);
+    const medalList = useSelector((state: {medal: MedalState}) => state.medal.medalList);
 
     useEffect(() => {
         let sortBy = medalTypes.GOLD;
@@ -27,7 +28,7 @@ export default function Medals() {
             sortBy = searchParams.get('sort') as string;
         }
         dispatch(SORT_MEDALS_BY_TYPE(sortBy ? sortBy : medalTypes.GOLD));
-    }, []);
+    }, [dispatch, searchParams]);
 
     return (
         <>
