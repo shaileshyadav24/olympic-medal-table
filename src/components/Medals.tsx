@@ -1,12 +1,13 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SORT_MEDALS_BY_TYPE } from "@/store/features/medalSlice";
 import MedalTable from './MedalTable';
 import NoMedals from './ui/NoMedals';
 import medalTypes from '@/constants/medalType';
+import MedalState from '@/interfaces/MedalState';
 
 const validSortTypes = [
     medalTypes.GOLD,
@@ -18,29 +19,22 @@ const validSortTypes = [
 export default function Medals() {
     const searchParams = useSearchParams()
     const dispatch = useDispatch();
-    const medalList = useSelector((state: any) => state.medal.medalList);
-    const [sortBy, setSortBy] = useState(medalTypes.GOLD);
+    const medalList = useSelector((state: {medal: MedalState}) => state.medal.medalList);
 
     useEffect(() => {
+        let sortBy = medalTypes.GOLD;
         const sortQuery = searchParams.get('sort');
         if (sortQuery && validSortTypes.includes(sortQuery)) {
-            setSortBy(searchParams.get('sort') as string);
+            sortBy = searchParams.get('sort') as string;
         }
-    }, []);
-
-    useEffect(() => {
         dispatch(SORT_MEDALS_BY_TYPE(sortBy ? sortBy : medalTypes.GOLD));
-    }, [sortBy]);
-
+    }, [dispatch, searchParams]);
 
     return (
         <>
             {
                 medalList && medalList.length > 0 ? (
-                    <MedalTable
-                        medalList={medalList}
-                        sortBy={sortBy}
-                        setSortBy={setSortBy} />
+                    <MedalTable />
                 )
                     : (<NoMedals />)
             }

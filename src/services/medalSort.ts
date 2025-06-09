@@ -6,15 +6,15 @@ function sortMedalsByGold (medalList: Medal[]): Medal[] {
 }
 
 function sortMedalsBySilver (medalList: Medal[]) {
-    return medalList.sort((a, b) => b.silver - a.silver || b.gold - a.gold);
+    return [...medalList].sort((a, b) => b.silver - a.silver || b.gold - a.gold);
 }
 
 function sortMedalsByBronze (medalList: Medal[]) {
-    return medalList.sort((a, b) => b.bronze - a.bronze || b.gold - a.gold);
+    return [...medalList].sort((a, b) => b.bronze - a.bronze || b.gold - a.gold);
 }
 
 function sortMedalsByTotal (medalList: Medal[]) {
-    return medalList.sort((a, b) => b.total - a.total || b.gold - a.gold);
+    return [...medalList].sort((a, b) => b.total - a.total || b.gold - a.gold);
 }
 
 export function sortMedalListByType (type: string, medalList: Medal[]) {
